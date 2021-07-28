@@ -1,0 +1,47 @@
+<th:block>
+    <div class="container">
+        <div th:if="${session.user == null}">
+            <h1>Welcome to Victorious Arena</h1>
+            <hr class="my-3"/>
+            <p class="h4">The most furious arena on the web</p>
+            <p class="h4">You will find many strong enemies but only the best will survive</p>
+            <hr class="my-3"/>
+            <h3><a href="/users/login">Login</a> if you have an account or
+                <a href="/users/register">Register</a> now and meet the greatest heroes of all time.
+            </h3>
+        </div>
+
+
+        <div th:unless="${session.user == null}">
+
+            <div th:if="${session.user.heroName == null}">
+                <div class="text-center mb-3">
+                    <h4 class="text-white mt-2">Welcome to the arena, Predator</h4>
+                </div>
+                <hr class="my-3"/>
+                <div class="container">
+                    <div class="text-center">
+                        <h2>User, you don't have a hero. Click below and create one.</h2>
+                        <a href="/heroes/create" class="btn btn-secondary">Create hero</a>
+                    </div>
+
+                </div>
+            </div>
+
+            <div th:unless="${session.user.heroName == null}">
+                <div class="text-center mb-3">
+                    <h4 class="text-white mt-2">Welcome to the arena, root</h4>
+                </div>
+                <hr class="my-3"/>
+                <div class="container">
+
+                    <div class="text-center">
+                        <h2>User, you have a hero. Buy items to make your hero stronger and later join the battle.</h2>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</th:block>
